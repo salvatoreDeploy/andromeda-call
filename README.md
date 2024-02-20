@@ -4,5 +4,9 @@
 
 ### Bibliotecas:
 
-- @chain-reaction-ui/react 
+- @chain-reaction-ui/react
 - Stiches
+- Phospor-React
+- React-Hook-Form
+- Hook-Form-Resolver
+- Zod
