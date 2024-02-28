@@ -10,3 +10,6 @@
 - React-Hook-Form
 - Hook-Form-Resolver
 - Zod
+- Axios
+- Nookies
+- @types/cookies
