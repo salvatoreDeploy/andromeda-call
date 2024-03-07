@@ -13,3 +13,7 @@
 - Axios
 - Nookies
 - @types/cookies
+
+### A fazer:
+
+[] Criar ambiente docker para esta aplicação com banco de dados postgres
