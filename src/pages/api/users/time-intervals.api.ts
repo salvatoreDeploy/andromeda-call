@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { NextApiRequest, NextApiResponse } from 'next'
 import { getServerSession } from 'next-auth'
 import { buildNextAuthOptions } from '../auth/[...nextauth].api'
@@ -5,12 +6,28 @@ import { z } from 'zod'
 import { prisma } from '../../../lib/prisma'
 
 const timeIntervalsBodySchema = z.object({
-  intervals: z.array(
-    z.object({
-      weekDay: z.number().min(0).max(6),
-      startTimeInMinute: z.number(),
-      endTimeInMinute: z.number(),
-    }),
+  intervals: z
+    .array(
+      z.object({
+        weekDay: z.number().min(0).max(6),
+        startTimeInMinute: z.number(),
+        endTimeInMinute: z.number(),
+      }),
+  )
+    .refine((intervals) => intervals.length > 0, {
+      message: 'Voce precisa selecionar pelo menos um dia da semana',
+    })
+    .refine(
+      (intervals) => {
+        return intervals.every(
+          (interval) =>
+            interval.endTimeInMinute - 60 >= interval.startTimeInMinute,
+        )
+      },
+      {
+        message:
+          'O horario de termino deve ser pelo menos uma hora de distancia de inicio',
+      },
   ),
 })
 
@@ -37,12 +54,12 @@ export default async function handler(
   // Ao criar o banco de daos sql para poder usar o createMany()
 
   await Promise.all(
-    intervals.map(() => {
+    intervals.map((interval) => {
       return prisma.userTimeInterval.create({
         data: {
-          week_day: 1,
-          time_start_in_minutes: 400,
-          time_end_in_minutes: 566,
+          week_day: interval.weekDay,
+          time_start_in_minutes: interval.startTimeInMinute,
+          time_end_in_minutes: interval.endTimeInMinute,
           user_id: session.user?.id,
         },
       })
