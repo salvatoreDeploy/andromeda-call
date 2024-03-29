@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  mysql:
+    container_name: andromeda-call-mysql
+    image: "bitnami/mysql:latest"
+    environment:
+      - MYSQL_ROOT_PASSWORD=docker
+      - MYSQL_DATABASE=andromeda_call
+      - MYSQL_USER=docker
+      - MYSQL_PASSWORD=docker
+    ports:
+      - "3306:3306"
+    volumes:
+      - andromeda_mysql_data:/bitnami/mysql/data"
+
+  postgres:
+    container_name: andromeda-call-postgres
+    image: bitnami/postgresql:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=andromeda_call
+    volumes:
+      - andromeda_call_pg_data:/bitnami/postgresql
+
+volumes:
+  andromeda_mysql_data:
+  andromeda_call_pg_data:

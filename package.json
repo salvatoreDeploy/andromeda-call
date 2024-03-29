@@ -1,0 +1,40 @@
+{
+  "name": "andromeda-call",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chain-reaction-ui/react": "^3.0.0",
+    "@hookform/resolvers": "^3.3.4",
+    "@prisma/client": "^5.10.2",
+    "@tanstack/react-query": "^5.28.8",
+    "@types/node": "20.11.19",
+    "@types/react": "18.2.56",
+    "@types/react-dom": "18.2.19",
+    "axios": "^1.6.7",
+    "dayjs": "^1.11.10",
+    "eslint": "8.56.0",
+    "eslint-config-next": "14.1.0",
+    "googleapis": "^134.0.0",
+    "next": "14.1.0",
+    "next-auth": "^4.24.6",
+    "next-seo": "^6.5.0",
+    "nookies": "^2.5.2",
+    "phosphor-react": "^1.4.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.50.1",
+    "typescript": "5.3.3",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@rocketseat/eslint-config": "^2.2.2",
+    "@types/cookies": "^0.9.0",
+    "prisma": "^5.10.2"
+  }
+}
